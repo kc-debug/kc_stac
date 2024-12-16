@@ -1,12 +1,5 @@
 from main import *
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-#reducing data size to increase speed
-data=data.head(10)
 np.random.seed(42)
 data['ProjectsCompleted'] = np.random.randint(1, 20, size=len(data))
 
@@ -48,23 +41,10 @@ multiple_mse = mean_squared_error(y_test, y_multiple_pred)
 
 print(f"Multiple MAE: {multiple_mae:.2f}, MSE: {multiple_mse:.2f}")
 
-# Plotting actual vs predicted values for both models
-plt.figure(figsize=(12, 6))
-
-# Simple prediction
-plt.subplot(1, 2, 1) #FOR COMPARISON
 plt.scatter(y_test, y_simple_pred, color='blue')
 plt.plot([y.min(), y.max()], [y.min(), y.max()], color='red')
-plt.title('Simple LR')
+plt.scatter(y_test, y_multiple_pred, color='green')
+plt.title('Simple LR-blue, Multiple LR-green')
 plt.xlabel('Actual Salary')
 plt.ylabel('Predicted Salary')
-
-# Multiple prediction
-plt.subplot(1, 2, 2)
-plt.scatter(y_test, y_multiple_pred, color='green', alpha=0.7)
-plt.plot([y.min(), y.max()], [y.min(), y.max()], color='red')
-plt.title('Multiple LR)')
-plt.xlabel('Actual Salary')
-plt.ylabel('Predicted Salary')
-
 plt.show()
