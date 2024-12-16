@@ -42,7 +42,6 @@ multiple_mse = mean_squared_error(y_test, y_multiple_pred)
 print(f"Multiple MAE: {multiple_mae:.2f}, MSE: {multiple_mse:.2f}")
 
 plt.scatter(y_test, y_simple_pred, color='blue')
-plt.plot([y.min(), y.max()], [y.min(), y.max()], color='red')
 plt.scatter(y_test, y_multiple_pred, color='green')
 plt.title('Simple LR-blue, Multiple LR-green')
 plt.xlabel('Actual Salary')
